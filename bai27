@@ -1,0 +1,19 @@
+public static String demChanVaMax(String s) {
+    String[] numbers = s.trim().split("\\s+");
+    int countEven = 0;
+    int max = Integer.MIN_VALUE;
+
+    for (String number : numbers) {
+        int value = Integer.parseInt(number);
+
+        if (value % 2 == 0) {
+            countEven++;
+        }
+
+        if (value > max) {
+            max = value;
+        }
+    }
+
+    return countEven + " " + max;
+}
