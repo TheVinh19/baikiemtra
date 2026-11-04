@@ -1,0 +1,26 @@
+public static String kiemTraEmail(String s) {
+    // Không được có khoảng trắng.
+    for (int i = 0; i < s.length(); i++) {
+        if (Character.isWhitespace(s.charAt(i))) {
+            return "KHONG HOP LE";
+        }
+    }
+
+    int at = s.indexOf('@');
+
+    // Phải có đúng một @ và phần trước @ không rỗng.
+    if (at <= 0 || at != s.lastIndexOf('@')) {
+        return "KHONG HOP LE";
+    }
+
+    String domain = s.substring(at + 1);
+
+    if (!domain.contains(".")
+            || domain.startsWith(".")
+            || domain.endsWith(".")
+            || domain.contains("..")) {
+        return "KHONG HOP LE";
+    }
+
+    return "HOP LE";
+}
