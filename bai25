@@ -1,0 +1,21 @@
+public static String chuanHoaTen(String s) {
+    s = s.trim();
+    if (s.isEmpty()) {
+        return "";
+    }
+
+    String[] words = s.toLowerCase(java.util.Locale.ROOT).split("\\s+");
+    StringBuilder result = new StringBuilder();
+
+    for (String word : words) {
+        if (result.length() > 0) {
+            result.append(" ");
+        }
+
+        result.append(word.substring(0, 1)
+                          .toUpperCase(java.util.Locale.ROOT));
+        result.append(word.substring(1));
+    }
+
+    return result.toString();
+}
