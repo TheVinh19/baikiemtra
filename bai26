@@ -1,0 +1,41 @@
+public static String danhSachDat(String s) {
+    java.util.List<String[]> passed = new java.util.ArrayList<>();
+
+    for (String item : s.split(",")) {
+        String[] parts = item.trim().split(":");
+        String id = parts[0].trim();
+        String score = parts[1].trim();
+
+        if (Double.parseDouble(score) >= 5) {
+            passed.add(new String[]{id, score});
+        }
+    }
+
+    passed.sort((a, b) -> {
+        int compareScore = Double.compare(
+            Double.parseDouble(b[1]),
+            Double.parseDouble(a[1])
+        );
+
+        if (compareScore != 0) {
+            return compareScore;
+        }
+
+        return a[0].compareTo(b[0]);
+    });
+
+    if (passed.isEmpty()) {
+        return "KHONG CO";
+    }
+
+    StringBuilder result = new StringBuilder();
+
+    for (String[] student : passed) {
+        if (result.length() > 0) {
+            result.append(" ");
+        }
+        result.append(student[0]);
+    }
+
+    return result.toString();
+}
